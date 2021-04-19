@@ -34,7 +34,7 @@ class RequestHeaderInterceptor @Inject constructor(
             .addHeader("x-device-id", getDeviceId())
             .addHeader("x-device-type", getDeviceType())
             .addHeader("x-device-tzoffset", getDeviceTimeZoneOffset())
-                .addHeader("Dentulu-Userid", "2")
+            .addHeader("Dentulu-Userid", "2")
             .addHeader("x-app-name", getAppName())
 
         if (repository.getAccessToken() != null) {
@@ -110,6 +110,6 @@ class RequestHeaderInterceptor @Inject constructor(
     }
 
     private fun getAppName(): String {
-        return "elsa_sales_mobile"
+        return "Recruitment App"
     }
 }

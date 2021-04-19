@@ -10,17 +10,11 @@ import javax.inject.Inject
 
 class AppRepository @Inject constructor(private val remote: RemoteRepository, private val localRepository: LocalRepository){
 
-    suspend fun login(request: LoginRequest): Response<LoginResponse> {
-        return remote.login(request)
-    }
+    suspend fun login(request: LoginRequest): Response<LoginResponse> = remote.login(request)
 
-    suspend fun profile(): Response<ProfileResponse> {
-        return remote.profile()
-    }
+    suspend fun profile(): Response<ProfileResponse> = remote.profile()
 
-    fun saveLoginToken(token: String) {
-        localRepository.saveAccessToken(token)
-    }
+    fun saveLoginToken(token: String) = localRepository.saveAccessToken(token)
 
     fun doLogout() {
         localRepository.clearUserData()

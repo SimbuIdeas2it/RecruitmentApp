@@ -16,8 +16,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 public class UserViewModel @Inject constructor(private val repository: AppRepository): BaseViewModel(){
-    val returnedVal = MutableLiveData<LoginResponse>()
-
     private val _profileRes = MutableLiveData<Resource<ProfileResponse>>()
     val profileRes : LiveData<Resource<ProfileResponse>>
         get() = _profileRes
@@ -32,6 +30,7 @@ public class UserViewModel @Inject constructor(private val repository: AppReposi
             repository.login(request).let {
                 if (it.isSuccessful) {
                     _loginRes.postValue(Resource.success(it.body()))
+                    it.body()?.token?.let { it1 -> repository.saveLoginToken(it1) }
                 }
                 else {
                     _loginRes.postValue(Resource.error(it.errorBody().toString(), null))

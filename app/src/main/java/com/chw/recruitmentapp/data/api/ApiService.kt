@@ -9,11 +9,11 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface ApiService {
-    @Headers("Accept: application/json")
+//    @Headers("Accept: application/json")
     @POST("login")
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
-    @Headers("Accept: application/json")
+//    @Headers("Accept: application/json")
     @POST("profile")
     suspend fun profile(@Body user_id: String): Response<ProfileResponse>
 }

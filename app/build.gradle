@@ -26,6 +26,7 @@ android {
         }
         debug {
             buildConfigField 'String', 'BASE_URL', '"https://app.dentulu.com/api/v2/webservice/"'
+//            buildConfigField 'String', 'BASE_URL', '"http://192.168.43.198/"'
         }
     }
 
